@@ -1,6 +1,7 @@
 <?php
 
-//require_once 'src/apiRequest.php';
+require_once 'src/apiRequest.php';
+require 'vendor/autoload.php';
 
 
 

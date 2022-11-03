@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/projet/public/styles/style.css">
+    <title>projet</title>
+</head>
+<body>
+    <header class="siteHeader"></header>
+    <main>
+        <form class="movieSearchForm" action="" method="post">
+            <label for="searchInput" style="display:none"> Search : </label>
+            <input name="searchInput" id="searchInput" class="apiSearchInput" type="text">
+            <input class="submitBtn" type="submit" value="Search">
+        </form>
+
+            <?php if(isset($data)):?>
+                <p>resultats pour <?=$_POST['searchInput']?><p>
+            <?php endif;?>
+
+        <div class="cardContainer">
+            <?php if(isset($json)):?>
+                <?php foreach($json->results as $movie): ?>
+                    <div class="cardContainer-card movieCards">
+                        <h4 class="cardContainer-card-title"><?= $movie->title ;?> </h4>
+                     <?php if (isset($movie->poster_path )): ?>
+                        <img src="https://image.tmdb.org/t/p/w185<?=$movie->poster_path ?>" alt="">
+                         <?php else :  ?>
+                            <img src="./public/img/missing.jpg" alt="">
+                     <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif;?>
+        </div>
+    </main>
+
+
+<!--    <script src="/projet/public/script/ajax-API.js"></script>-->
+</body>
+</html>
